@@ -1,9 +1,8 @@
-# Perbaikan error build Vercel (spread Map iterator)
+# Perbaikan error build: tipe formatter chart (recharts)
 
-Vercel memakai target TypeScript yang lebih ketat daripada `npm run dev` di
-lokal, sehingga `[...sebuahMap.entries()]` ditolak. Perbaikannya diganti jadi
-`Array.from(sebuahMap.entries())` yang hasilnya sama persis tapi diterima di
-kedua mode.
+TypeScript di Vercel lebih ketat soal tipe data formatter Tooltip recharts.
+Diperbaiki dengan memberi tipe eksplisit "number" pada parameter formatter,
+sesuai yang recharts harapkan.
 
-Salin isi folder ini ke project (timpa: app/admin/laporan/page.tsx,
-app/api/transactions/route.ts). Tidak perlu migrasi database.
+Salin isi folder ini ke project (timpa: components/admin/TrenChart.tsx,
+components/admin/TopProdukChart.tsx). Tidak perlu migrasi database.

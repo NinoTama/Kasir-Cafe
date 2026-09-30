@@ -15,7 +15,7 @@ export default function TrenChart({ data }: { data: { tanggal: string; total: nu
             width={40}
           />
           <Tooltip
-            formatter={(v: number) => ["Rp" + v.toLocaleString("id-ID"), "Omzet"]}
+            formatter={(value) => ["Rp" + Number(value).toLocaleString("id-ID"), "Omzet"]}
             contentStyle={{ borderRadius: 10, borderColor: "#ded2b6", fontSize: 12 }}
           />
           <Line type="monotone" dataKey="total" stroke="#2c4a3b" strokeWidth={2.5} dot={{ r: 3 }} />

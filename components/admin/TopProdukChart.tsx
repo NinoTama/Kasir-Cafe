@@ -10,7 +10,10 @@ export default function TopProdukChart({ data }: { data: { nama: string; qty: nu
           <CartesianGrid stroke="#ded2b6" strokeDasharray="3 3" horizontal={false} />
           <XAxis type="number" tick={{ fontSize: 11, fill: "#241c16aa" }} allowDecimals={false} />
           <YAxis type="category" dataKey="nama" tick={{ fontSize: 11, fill: "#241c16" }} width={110} />
-          <Tooltip formatter={(v: number) => [v, "Terjual"]} contentStyle={{ borderRadius: 10, borderColor: "#ded2b6", fontSize: 12 }} />
+          <Tooltip
+            formatter={(value) => [String(value), "Terjual"]}
+            contentStyle={{ borderRadius: 10, borderColor: "#ded2b6", fontSize: 12 }}
+          />
           <Bar dataKey="qty" fill="#a8402c" radius={[0, 6, 6, 0]} />
         </BarChart>
       </ResponsiveContainer>
