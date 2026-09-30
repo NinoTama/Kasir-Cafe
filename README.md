@@ -1,15 +1,9 @@
-# Semua file siap pasang (Vercel Blob + fitur catatan)
+# Perbaikan error build Vercel (spread Map iterator)
 
-## Pasang (1x salin semua)
-1. Ekstrak zip ini.
-2. Buka foldernya, Ctrl+A, Ctrl+C.
-3. Buka folder "kasir" project kamu di File Explorer, Ctrl+V, pilih
-   "Replace the files in the destination".
-4. HAPUS folder app/api/gambar (yang isinya [name]/route.ts) - klik kanan di
-   VS Code Explorer, Delete. Sudah tidak dipakai lagi.
-5. Terminal: npm install @vercel/blob
-6. npm run dev
-7. Buka /admin/produk, upload ulang semua foto menu.
-8. Cek /kasir, pastikan semua foto muncul.
+Vercel memakai target TypeScript yang lebih ketat daripada `npm run dev` di
+lokal, sehingga `[...sebuahMap.entries()]` ditolak. Perbaikannya diganti jadi
+`Array.from(sebuahMap.entries())` yang hasilnya sama persis tapi diterima di
+kedua mode.
 
-Tidak perlu migrasi database untuk paket ini.
+Salin isi folder ini ke project (timpa: app/admin/laporan/page.tsx,
+app/api/transactions/route.ts). Tidak perlu migrasi database.

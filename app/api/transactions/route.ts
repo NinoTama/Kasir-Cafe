@@ -47,7 +47,7 @@ export async function POST(req: Request) {
 
   try {
     const hasil = await prisma.$transaction(async (tx) => {
-      const products = await tx.product.findMany({ where: { id: { in: [...qtyPerProduk.keys()] } } });
+      const products = await tx.product.findMany({ where: { id: { in: Array.from(qtyPerProduk.keys()) } } });
       if (products.length !== qtyPerProduk.size) throw new Error("Ada produk yang tidak ditemukan");
 
       // kurangi stok per produk (gagal kalau stok tidak cukup, aman dari race condition)
