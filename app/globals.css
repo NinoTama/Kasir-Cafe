@@ -3,25 +3,36 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --cream: #f6f1e4;
+  --paper: #fffdf8;
+  --ink: #241c16;
+  --pine: #2c4a3b;
+  --pine-dark: #1c3229;
+  --brick: #a8402c;
+  --brick-dark: #8a3222;
+  --gold: #c69a3d;
+  --line: #ded2b6;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  border-color: var(--line);
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+h1, h2, h3, .font-display {
+  font-family: var(--font-display);
+}
+
+/* angka harga/total selalu rata & mudah dibaca */
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@media print {
+  body { background: white; }
 }

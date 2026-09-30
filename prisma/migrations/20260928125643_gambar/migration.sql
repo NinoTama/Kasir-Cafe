@@ -1,0 +1,7 @@
+-- AlterTable
+ALTER TABLE `product` ADD COLUMN `gambar` VARCHAR(191) NULL;
+
+-- AlterTable
+ALTER TABLE `transaction` ADD COLUMN `meja` VARCHAR(191) NULL,
+    ADD COLUMN `metode` VARCHAR(191) NOT NULL DEFAULT 'TUNAI',
+    ADD COLUMN `tipe` VARCHAR(191) NOT NULL DEFAULT 'DINE_IN';

@@ -1,0 +1,80 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  ADMIN
+  KASIR
+}
+
+model User {
+  id           Int           @id @default(autoincrement())
+  nama         String
+  username     String        @unique
+  password     String
+  role         Role          @default(KASIR)
+  aktif        Boolean       @default(true)
+  transactions Transaction[]
+}
+
+model Product {
+  id       Int               @id @default(autoincrement())
+  nama     String
+  kode     String            @unique
+  harga    Int
+  stok     Int               @default(0)
+  kategori String?
+  gambar   String?
+  items    TransactionItem[]
+}
+
+model Member {
+  id           Int           @id @default(autoincrement())
+  nama         String
+  noHp         String        @unique
+  poin         Int           @default(0)
+  createdAt    DateTime      @default(now())
+  transactions Transaction[]
+}
+
+model Setting {
+  key   String @id
+  value Int
+}
+
+model Transaction {
+  id           Int               @id @default(autoincrement())
+  kasirId      Int
+  kasir        User              @relation(fields: [kasirId], references: [id])
+  memberId     Int?
+  member       Member?           @relation(fields: [memberId], references: [id])
+  subtotal     Int               @default(0)
+  diskon       Int               @default(0)
+  potonganPoin Int               @default(0)
+  poinDipakai  Int               @default(0)
+  poinDidapat  Int               @default(0)
+  total        Int
+  bayar        Int
+  kembalian    Int
+  metode       String            @default("TUNAI")
+  tipe         String            @default("DINE_IN")
+  meja         String?
+  createdAt    DateTime          @default(now())
+  items        TransactionItem[]
+}
+
+model TransactionItem {
+  id            Int         @id @default(autoincrement())
+  transactionId Int
+  transaction   Transaction @relation(fields: [transactionId], references: [id])
+  productId     Int
+  product       Product     @relation(fields: [productId], references: [id])
+  qty           Int
+  harga         Int
+  catatan       String?
+}
