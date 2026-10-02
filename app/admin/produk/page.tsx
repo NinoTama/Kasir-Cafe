@@ -7,7 +7,6 @@ import { prisma } from "@/lib/prisma";
 import UploadGambar from "@/components/UploadGambar";
 import { hapusGambar } from "@/lib/uploads";
 import { KATEGORI_SARAN, ikonKategori } from "@/lib/categories";
-import { rp } from "@/lib/format";
 
 function gagal(msg: string): never {
   redirect("/admin/produk?err=" + encodeURIComponent(msg));
