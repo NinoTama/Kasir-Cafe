@@ -28,7 +28,7 @@ export default async function StrukPage({ params }: { params: { id: string } }) 
 
   return (
     <main className="min-h-screen bg-cream p-4">
-      <div className="mx-auto w-[320px] space-y-1 rounded-2xl border border-line bg-white p-4 font-mono text-xs text-black shadow-sm print:rounded-none print:border-0 print:shadow-none">
+      <div className="mx-auto w-full max-w-[320px] space-y-1 rounded-2xl border border-line bg-white p-4 font-mono text-xs text-black shadow-sm print:w-[320px] print:rounded-none print:border-0 print:shadow-none">
         <div className="text-center">
           <div className="text-sm font-bold">{CAFE.nama}</div>
           <div>{CAFE.alamat}</div>
@@ -65,9 +65,9 @@ export default async function StrukPage({ params }: { params: { id: string } }) 
         <div className="text-center">{CAFE.footer}</div>
       </div>
 
-      <div className="mx-auto mt-4 flex w-[320px] gap-2 print:hidden">
+      <div className="mx-auto mt-4 flex w-full max-w-[320px] gap-2 print:hidden">
         <PrintButton />
-        <Link href="/kasir" className="rounded-lg border border-line px-4 py-2 text-sm text-ink/70 hover:border-pine">Transaksi baru</Link>
+        <Link href="/kasir" className="flex-1 rounded-lg border border-line px-4 py-2 text-center text-sm text-ink/70 hover:border-pine">Transaksi baru</Link>
       </div>
     </main>
   );

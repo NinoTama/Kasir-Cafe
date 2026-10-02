@@ -69,9 +69,9 @@ export default async function AkunPage({ searchParams }: { searchParams: { err?:
 
   return (
     <main className="min-h-screen bg-cream">
-      <div className="mx-auto max-w-3xl space-y-6 p-6">
-        <div className="flex items-center justify-between">
-          <div className="font-display text-2xl text-pine">Akun Kasir & Admin</div>
+      <div className="mx-auto max-w-3xl space-y-5 p-4 sm:space-y-6 sm:p-6">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="font-display text-xl text-pine sm:text-2xl">Akun Kasir & Admin</div>
           <Link href="/admin" className="text-sm text-pine underline">← Dashboard</Link>
         </div>
 

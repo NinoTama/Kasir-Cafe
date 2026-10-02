@@ -7,6 +7,7 @@ import { prisma } from "@/lib/prisma";
 import UploadGambar from "@/components/UploadGambar";
 import { hapusGambar } from "@/lib/uploads";
 import { KATEGORI_SARAN, ikonKategori } from "@/lib/categories";
+import { rp } from "@/lib/format";
 
 function gagal(msg: string): never {
   redirect("/admin/produk?err=" + encodeURIComponent(msg));
@@ -74,10 +75,10 @@ export default async function ProdukPage({ searchParams }: { searchParams: { err
 
   return (
     <main className="min-h-screen bg-cream">
-      <div className="mx-auto max-w-5xl space-y-6 p-6">
-        <div className="flex items-center justify-between">
+      <div className="mx-auto max-w-5xl space-y-5 p-4 sm:space-y-6 sm:p-6">
+        <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <div className="font-display text-2xl text-pine">Menu & Stok</div>
+            <div className="font-display text-xl text-pine sm:text-2xl">Menu & Stok</div>
             <p className="text-sm text-ink/60">{products.length} menu terdaftar</p>
           </div>
           <Link href="/admin" className="text-sm text-pine underline">← Dashboard</Link>

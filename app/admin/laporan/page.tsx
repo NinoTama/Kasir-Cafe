@@ -52,7 +52,7 @@ export default async function LaporanPage({ searchParams }: { searchParams: { da
     const key = t.createdAt.toLocaleDateString("id-ID", { day: "2-digit", month: "2-digit", timeZone: "Asia/Jakarta" });
     perTanggal.set(key, (perTanggal.get(key) ?? 0) + t.total);
   }
-  const dataTren = Array.from(perTanggal.entries())
+  const dataTren = [...perTanggal.entries()]
     .map(([tanggal, total]) => ({ tanggal, total }))
     .sort((a, b) => {
       const [da, ma] = a.tanggal.split("/").map(Number);
@@ -63,7 +63,7 @@ export default async function LaporanPage({ searchParams }: { searchParams: { da
   // data untuk grafik menu terlaris
   const perProduk = new Map<string, number>();
   for (const t of transaksi) for (const it of t.items) perProduk.set(it.product.nama, (perProduk.get(it.product.nama) ?? 0) + it.qty);
-  const dataTopProduk = Array.from(perProduk.entries())
+  const dataTopProduk = [...perProduk.entries()]
     .map(([nama, qty]) => ({ nama, qty }))
     .sort((a, b) => b.qty - a.qty)
     .slice(0, 8)
@@ -73,10 +73,10 @@ export default async function LaporanPage({ searchParams }: { searchParams: { da
 
   return (
     <main className="min-h-screen bg-cream">
-      <div className="mx-auto max-w-5xl space-y-6 p-6">
-        <div className="flex items-center justify-between">
+      <div className="mx-auto max-w-5xl space-y-5 p-4 sm:space-y-6 sm:p-6">
+        <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <div className="font-display text-2xl text-pine">Laporan Penjualan</div>
+            <div className="font-display text-xl text-pine sm:text-2xl">Laporan Penjualan</div>
             <p className="text-sm text-ink/60">{transaksi.length} transaksi</p>
           </div>
           <Link href="/admin" className="text-sm text-pine underline">← Dashboard</Link>
@@ -112,14 +112,14 @@ export default async function LaporanPage({ searchParams }: { searchParams: { da
           </div>
         </div>
 
-        <div className="grid gap-4 lg:grid-cols-2">
+        <div className="grid gap-4 overflow-x-hidden md:grid-cols-2">
           <TrenChart data={dataTren} />
           <TopProdukChart data={dataTopProduk} />
         </div>
 
         {perMetode.size > 0 && (
           <div className="flex flex-wrap gap-2 text-sm">
-            {Array.from(perMetode.entries()).map(([m, v]) => (
+            {[...perMetode.entries()].map(([m, v]) => (
               <span key={m} className="rounded-full border border-line bg-paper px-3 py-1">
                 {m}: <b className="tabular">{v.jumlah}</b> · <span className="tabular">{rp(v.total)}</span>
               </span>

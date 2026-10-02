@@ -24,7 +24,7 @@ export default async function PengaturanPage() {
 
   return (
     <main className="min-h-screen bg-cream">
-      <div className="mx-auto max-w-lg space-y-6 p-6">
+      <div className="mx-auto max-w-lg space-y-5 p-4 sm:space-y-6 sm:p-6">
         <div className="flex items-center justify-between">
           <div className="font-display text-2xl text-pine">Pengaturan Member</div>
           <Link href="/admin" className="text-sm text-pine underline">← Dashboard</Link>

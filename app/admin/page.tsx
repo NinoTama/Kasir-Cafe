@@ -24,10 +24,10 @@ export default async function AdminPage() {
 
   return (
     <main className="min-h-screen bg-cream">
-      <div className="mx-auto max-w-3xl space-y-8 p-6">
-        <div className="flex items-center justify-between">
+      <div className="mx-auto max-w-3xl space-y-6 p-4 sm:space-y-8 sm:p-6">
+        <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <div className="font-display text-2xl text-pine">Dashboard Admin</div>
+            <div className="font-display text-xl text-pine sm:text-2xl">Dashboard Admin</div>
             <p className="text-sm text-ink/60">Halo, {session.user.name}</p>
           </div>
           <LogoutButton />
