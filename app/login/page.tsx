@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { signIn, getSession, signOut } from "next-auth/react";
+import { CAFE } from "@/lib/config";
 
 const PERAN = [
   { key: "ADMIN", label: "Admin" },
@@ -50,7 +51,7 @@ export default function LoginPage() {
     <main className="flex min-h-screen items-center justify-center bg-cream p-4">
       <div className="w-full max-w-sm">
         <div className="mb-6 text-center">
-          <div className="font-display text-3xl text-pine">Kasir Cafe</div>
+          <div className="font-display text-3xl text-pine">{CAFE.nama}</div>
           <p className="mt-1 text-sm text-ink/60">Masuk untuk mulai bertugas</p>
         </div>
 
